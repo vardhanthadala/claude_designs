@@ -1,0 +1,151 @@
+:root {
+  --font-body: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.76);
+  --ink-faint: rgba(255, 255, 255, 0.56);
+
+  /* Cool, mossy glass — tinted GREEN so the cards belong to the forest rather than
+     sitting on top of it. A neutral grey glass here breaks the whole illusion. */
+  --glass: rgba(22, 32, 26, 0.55);
+  --glass-lift: rgba(32, 44, 36, 0.68);
+  --hairline: rgba(255, 255, 255, 0.13);
+
+  --blush: #f0b4c4; /* the single accent — used only for the focus ring and the favicon */
+
+  --ground: #16241b; /* sampled from the footage: deep forest green */
+  --ground-deep: #050a07; /* into near-black */
+
+  --gutter: clamp(16px, 3.4vw, 40px);
+  --shell: 1240px;
+  --nav-h: 72px;
+  --radius: 12px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--ground-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blush);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Controls — everything in this design is a pill ─────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.35s var(--ease-out), transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Near-white with a faint blush cast, matching the product */
+.btn--pearl {
+  background: linear-gradient(180deg, #ffffff 0%, #f6e9ee 100%);
+  color: #1d1418;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.36);
+}
+
+.btn--pearl:hover {
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.44);
+}
+
+.btn--ink {
+  background: rgba(10, 14, 11, 0.78);
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.btn--ink:hover {
+  background: rgba(18, 24, 19, 0.88);
+  border-color: rgba(255, 255, 255, 0.38);
+}

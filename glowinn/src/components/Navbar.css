@@ -1,0 +1,129 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: var(--nav-h);
+}
+
+/* ── Brand ──────────────────────────────────────────────────────────────── */
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+/* ── Rail — floats free of the bar and carries its own surface ──────────── */
+
+.nav__rail {
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(14, 20, 16, 0.5);
+  border: 1px solid var(--hairline);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
+}
+
+.nav__rail a {
+  padding: 8px 17px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  transition: background-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
+}
+
+.nav__rail a:hover {
+  color: var(--ink);
+}
+
+.nav__rail a.is-active {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--ink);
+}
+
+/* ── Actions ────────────────────────────────────────────────────────────── */
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav__register {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  transition: color 0.3s var(--ease-out);
+}
+
+.nav__register:hover {
+  color: var(--ink);
+}
+
+.nav__actions .btn {
+  padding: 10px 22px;
+  font-size: 13.5px;
+}
+
+/* ── Toggle ─────────────────────────────────────────────────────────────── */
+
+.nav__toggle {
+  display: none;
+  margin-left: auto;
+  padding: 8px;
+  color: var(--ink);
+}
+
+.nav__sheet {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .nav__rail,
+  .nav__actions {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: inline-flex;
+  }
+
+  .nav__sheet {
+    display: flex;
+    flex-direction: column;
+    margin: 0 var(--gutter);
+    padding: 12px 18px 20px;
+    border-radius: 18px;
+    background: rgba(10, 16, 12, 0.94);
+    border: 1px solid var(--hairline);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
+
+  .nav__sheet > a {
+    padding: 13px 4px;
+    font-size: 15.5px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav__sheet > a.btn {
+    margin-top: 16px;
+    border-bottom: 0;
+    color: #1d1418;
+  }
+}

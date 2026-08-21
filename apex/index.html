@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>APEX 95 — Cinematic Sequence</title>
+<meta name="description" content="A scroll-driven cinematic automotive sequence." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ───────────────────────────── LOADER ───────────────────────────── -->
+<div id="loader" class="loader">
+  <div class="loader__inner">
+    <div class="loader__mark">APEX</div>
+    <div class="loader__bar"><i id="loaderFill"></i></div>
+    <div class="loader__meta"><span>VELOCITY SERIES</span><span id="loaderPct">00</span></div>
+  </div>
+</div>
+
+<!-- ───────────────────────────── STAGE ───────────────────────────── -->
+<div id="stage" class="stage">
+  <canvas id="gl"></canvas>
+
+  <!-- cinematic letterbox -->
+  <div class="bar bar--top"></div>
+  <div class="bar bar--bottom"></div>
+
+  <!-- exposure / transition flash -->
+  <div id="flash" class="flash"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ── typography overlay ── -->
+  <div id="ui" class="ui">
+    <header class="ui__top">
+      <div class="label">
+        <span class="dot"></span>APEX <em>/</em> VELOCITY SERIES
+      </div>
+      <nav class="ui__nav">
+        <span>MODEL</span><span>PERFORMANCE</span><span>ATELIER</span>
+      </nav>
+    </header>
+
+    <div class="ui__center">
+      <h1 class="title" data-cue="0">
+        <span class="title__line"><span>SILENCE</span></span>
+        <span class="title__line title__line--sub"><span>BEFORE THE STORM</span></span>
+      </h1>
+      <h1 class="title" data-cue="1">
+        <span class="title__line"><span>APEX</span> <span class="italic">95</span></span>
+        <span class="title__line title__line--sub"><span>RACE-SPEC V8 · 1,180 HP · NUMBER 95</span></span>
+      </h1>
+      <h1 class="title" data-cue="2">
+        <span class="title__line"><span>THE</span> <span class="italic">LINE</span></span>
+        <span class="title__line title__line--sub"><span>APEX ANGLE · FOUR-WHEEL DRIFT</span></span>
+      </h1>
+      <h1 class="title" data-cue="3">
+        <span class="title__line"><span>FACE</span> <span class="italic">TO</span> <span>FACE</span></span>
+        <span class="title__line title__line--sub"><span>EYES UP · LIGHTS ON · FLOOR IT</span></span>
+      </h1>
+    </div>
+
+    <footer class="ui__bottom">
+      <div class="spec">
+        <div class="spec__row"><b id="specSpeed">000</b><i>KM/H</i></div>
+        <div class="spec__row spec__row--small"><span>0–100</span><em>2.4 S</em></div>
+        <div class="spec__row spec__row--small"><span>V-MAX</span><em>352 KM/H</em></div>
+      </div>
+      <div class="scrollcue" id="scrollcue">
+        <span>SCROLL</span><i></i>
+      </div>
+      <div class="cta">
+        <a href="#after" class="cta__link"><span>CONFIGURE</span><i>&#8594;</i></a>
+      </div>
+    </footer>
+
+    <!-- chapter ticks -->
+    <ol class="chapters" id="chapters">
+      <li data-t="0.00"><b></b><span>ESTABLISH</span></li>
+      <li data-t="0.12"><b></b><span>ENTRY</span></li>
+      <li data-t="0.30"><b></b><span>PASS</span></li>
+      <li data-t="0.45"><b></b><span>TURN</span></li>
+      <li data-t="0.74"><b></b><span>REVEAL</span></li>
+      <li data-t="0.80"><b></b><span>LAUNCH</span></li>
+    </ol>
+  </div>
+</div>
+
+<!-- scroll track: drives the whole hero timeline -->
+<div id="track" class="track"></div>
+
+<!-- ───────────────────────── NEXT SECTION ───────────────────────── -->
+<section id="after" class="after">
+  <div class="after__inner">
+    <p class="after__eyebrow">CHAPTER TWO</p>
+    <h2 class="after__title">Built for the <span class="italic">last lap.</span><br />Made for the <span class="italic">crowd.</span></h2>
+    <p class="after__lede">
+      Number 95 runs a race-spec V8, a steel tube frame and a grin you can see from the
+      grandstand. Every panel is hand-laid, every decal placed by feel. The APEX 95 was not
+      built to be quick on paper — it was built to win in the final corner.
+    </p>
+    <div class="after__grid">
+      <div class="stat"><b>1,180</b><span>HORSEPOWER</span></div>
+      <div class="stat"><b>2.4s</b><span>0–100 KM/H</span></div>
+      <div class="stat"><b>352</b><span>KM/H V-MAX</span></div>
+      <div class="stat"><b>1,410</b><span>KG DRY</span></div>
+    </div>
+    <a class="after__cta" href="#stage">BUILD YOURS <i>&#8594;</i></a>
+  </div>
+</section>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

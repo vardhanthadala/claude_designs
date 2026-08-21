@@ -1,0 +1,210 @@
+.hero {
+  --scale: 1;
+  --ui-scale: 1;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-top: var(--nav-h);
+  padding-bottom: clamp(20px, 3vh, 34px);
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 40%, var(--ground) 0%, var(--ground-deep) 100%);
+}
+
+/* ── Video layer ────────────────────────────────────────────────────────── */
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out);
+}
+
+.hero__video.is-ready {
+  opacity: 1;
+}
+
+/* The footage already falls off to black at the edges, so this only deepens the
+   vignette and darkens the top band under the nav. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(92% 68% at 50% 52%, rgba(6, 12, 8, 0) 42%, rgba(5, 10, 7, 0.58) 100%),
+    linear-gradient(
+      180deg,
+      rgba(5, 10, 7, 0.66) 0%,
+      rgba(5, 10, 7, 0.12) 22%,
+      rgba(5, 10, 7, 0) 50%,
+      rgba(5, 10, 7, 0.72) 100%
+    );
+}
+
+/* ── Centre block ───────────────────────────────────────────────────────── */
+
+.hero__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero__title {
+  font-size: calc(clamp(1.9rem, 4.3vw, 3.5rem) * var(--scale));
+  font-weight: 400; /* light and open — the weight IS the personality here */
+  line-height: 1.16;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-shadow: 0 2px 26px rgba(4, 10, 6, 0.6);
+  animation: bloom 1s var(--ease-out) both;
+}
+
+.hero__title-lead {
+  display: block;
+  font-size: 0.76em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero__cta {
+  margin-top: calc(clamp(22px, 3.4vh, 36px) * var(--scale));
+  padding: calc(12px * var(--ui-scale)) calc(28px * var(--ui-scale));
+  font-size: calc(14px * var(--ui-scale));
+  animation: bloom 1s var(--ease-out) 0.1s both;
+}
+
+/* ── Foot row ───────────────────────────────────────────────────────────── */
+
+.hero__foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(14px, 2.4vw, 30px);
+  padding-top: clamp(18px, 3vh, 32px);
+}
+
+.card {
+  padding: calc(15px * var(--ui-scale)) calc(18px * var(--ui-scale));
+  border-radius: var(--radius);
+  background: var(--glass);
+  border: 1px solid var(--hairline);
+  -webkit-backdrop-filter: blur(16px) saturate(115%);
+  backdrop-filter: blur(16px) saturate(115%);
+  animation: bloom 1s var(--ease-out) 0.3s both;
+}
+
+.card--note {
+  max-width: 320px;
+}
+
+.card--note h2 {
+  font-size: calc(14.5px * var(--ui-scale));
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+.card--note p {
+  margin-top: 6px;
+  font-size: calc(11.5px * var(--ui-scale));
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--ink-faint);
+}
+
+.hero__caption {
+  padding-bottom: 6px;
+  font-size: calc(12.5px * var(--ui-scale));
+  font-weight: 300;
+  color: var(--ink-soft);
+  text-shadow: 0 1px 14px rgba(4, 10, 6, 0.7);
+}
+
+.hero__stats {
+  display: flex;
+  gap: clamp(10px, 1.4vw, 16px);
+}
+
+.card--stat {
+  min-width: calc(112px * var(--ui-scale));
+  display: flex;
+  flex-direction: column;
+}
+
+.card--stat strong {
+  font-size: calc(23px * var(--ui-scale));
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.card__label {
+  font-size: calc(12px * var(--ui-scale));
+  font-weight: 300;
+  color: var(--ink-faint);
+}
+
+.card__foot {
+  margin-top: calc(14px * var(--ui-scale));
+  font-size: calc(11px * var(--ui-scale));
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+
+/* ── Motion ─────────────────────────────────────────────────────────────── */
+
+@keyframes bloom {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__title,
+  .hero__cta,
+  .card {
+    animation: none;
+  }
+
+  .hero__video {
+    transition: opacity 0.3s linear;
+  }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .hero__foot {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .card--note {
+    max-width: none;
+  }
+
+  .hero__stats {
+    justify-content: center;
+  }
+
+  .card--stat {
+    flex: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__caption {
+    order: -1; /* the line reads better above the cards once they stack */
+  }
+}
