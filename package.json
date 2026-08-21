@@ -1,0 +1,11 @@
+{
+  "name": "claude-designs",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build:tunnel": "cd tunnel && npm install --no-audit --no-fund && npm run build",
+    "build:glowinn": "cd glowinn && npm install --no-audit --no-fund && npm run build",
+    "build": "npm run build:tunnel && npm run build:glowinn && node scripts/assemble.mjs"
+  }
+}
